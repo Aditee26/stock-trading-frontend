@@ -1,12 +1,11 @@
 [build]
-  command = "npm run build"
+  command = "npm ci && npm run build"
   publish = "build"
 
 [build.environment]
   REACT_APP_API_URL = "https://stock-trading-api-in2x.onrender.com/api"
+  NODE_VERSION = "18.17.0"
 
-# Force npm to use the correct permissions
-[[headers]]
-  for = "/*"
-  [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
+# Cache settings to speed up builds
+[build.processing]
+  skip_processing = false
